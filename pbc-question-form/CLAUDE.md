@@ -10,6 +10,7 @@ The audience is Nigerian church members, mostly on phones and mobile data. Keep 
 public/            → static site deployed to Vercel (no build step)
   index.html       → the form (all HTML/CSS/JS inline)
   pbc-logo.png     → church logo, transparent PNG
+  og-image.jpg     → 1200×630 WhatsApp/social link preview (og:image)
 apps-script/       → Google Apps Script bound to the Sheet (deployed with clasp)
   Code.gs          → doPost appends [time, topic, question, name] to the "Questions" tab
   appsscript.json  → web app: executeAs USER_DEPLOYING, access ANYONE_ANONYMOUS
