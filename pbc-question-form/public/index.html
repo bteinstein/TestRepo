@@ -128,7 +128,7 @@
   <main class="card">
     <form id="qform" novalidate>
       <div class="block">
-        <div class="step"><span class="num">1</span><span class="h">What is your question about? <span class="opt">(optional)</span><span class="yo" lang="yo">Kí ni ìbéèrè yín dá lé lórí? (kò pọndandan)</span></span></div>
+        <div class="step"><span class="num">1</span><span class="h">What is your question about? <span class="opt">(optional, pick any)</span><span class="yo" lang="yo">Kí ni ìbéèrè yín dá lé lórí? Ẹ lè yan ju ẹyọ kan lọ (kò pọndandan)</span></span></div>
         <fieldset class="chips" id="topics">
           <legend>Topic</legend>
         </fieldset>
@@ -203,15 +203,8 @@
   const form = $("qform"), q = $("question"), err = $("err"), btn = $("submit"), btnHTML = btn.innerHTML;
 
   $("topics").insertAdjacentHTML("beforeend", TOPICS.map(([t,yo],i) =>
-    `<label class="chip"><input type="radio" name="topic" value="${t.replace(/"/g,"&quot;")}" id="t${i}"><span>${t}<span class="yo" lang="yo">${yo}</span></span></label>`
+    `<label class="chip"><input type="checkbox" name="topic" value="${t.replace(/"/g,"&quot;")}" id="t${i}"><span>${t}<span class="yo" lang="yo">${yo}</span></span></label>`
   ).join(""));
-  // allow un-selecting a chip by tapping it again
-  document.querySelectorAll('#topics input').forEach(r => {
-    r.addEventListener("click", () => {
-      if (r.dataset.was === "1") { r.checked = false; r.dataset.was = ""; }
-      else { document.querySelectorAll('#topics input').forEach(o => o.dataset.was = ""); r.dataset.was = "1"; }
-    });
-  });
 
   q.addEventListener("input", () => {
     const n = q.value.length, c = $("count");
@@ -227,7 +220,7 @@
     if (text.length < 5) { err.textContent = "Please type your question before sending."; q.focus(); return; }
     if ($("website").value) return; // spam bot
 
-    const topic = (form.querySelector('input[name=topic]:checked') || {}).value || "";
+    const topic = [...form.querySelectorAll('input[name=topic]:checked')].map(o => o.value).join("; ");
     const body = new URLSearchParams({ topic, question: text, name: $("name").value.trim() });
 
     btn.disabled = true; btn.textContent = "Sending…"; err.textContent = "";
@@ -249,7 +242,6 @@
 
   $("again").addEventListener("click", () => {
     form.reset(); $("count").textContent = "0 / 1500";
-    document.querySelectorAll('#topics input').forEach(o => o.dataset.was = "");
     $("done").hidden = true; form.hidden = false; q.focus();
   });
 </script>

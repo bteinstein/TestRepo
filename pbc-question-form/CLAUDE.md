@@ -17,7 +17,7 @@ apps-script/       → Google Apps Script bound to the Sheet (deployed with clas
 
 ## Requirements (do not change without asking)
 - Only the question is required. Name and topic are **optional**, and a blank name is saved as "Anonymous".
-- Topic chips: the list in `TOPICS` inside `index.html`.
+- Topic chips: the list in `TOPICS` inside `index.html` (English + Yoruba subtext). Members can pick several; they are saved joined with "; ".
 - Deadline: **on or before Sunday 4 October 2026**. The form closes on its own at `CLOSES_AT = 2026-10-04T23:59:59+01:00`.
 - The page must say that members can still send their question to the **church WhatsApp group**.
 - The answers are read by the user, the Pastor and the speaker, through Viewer access to the Sheet.
