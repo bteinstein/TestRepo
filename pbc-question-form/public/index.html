@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Personal Finances – Ask Your Question | Powerline Baptist Church</title>
-<meta name="description" content="October is Capacity Building month. Send your personal finance question ahead of the teaching. Your name is optional.">
-<meta property="og:title" content="Ask Your Money Question – Powerline Baptist Church">
-<meta property="og:description" content="October Capacity Building: Personal Finances. Send your question before Sunday, 4 October. Name optional.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Personal Finances – Share Your Questions | Powerline Baptist Church</title>
+<meta name="description" content="October · Capacity Building. Share your questions on personal finances ahead of the teaching. You may remain anonymous.">
+<meta property="og:title" content="Personal Finances – Share Your Questions">
+<meta property="og:description" content="October · Capacity Building at Powerline Baptist Church. Send in your questions before Sunday, 4 October. You may remain anonymous.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pbc-questions.vercel.app/">
 <meta property="og:site_name" content="Powerline Baptist Church">
@@ -15,163 +15,238 @@
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Powerline Baptist Church – Personal Finances: send your question on or before Sunday, 4 October">
+<meta property="og:image:alt" content="Powerline Baptist Church – Personal Finances: share your questions on or before Sunday, 4 October">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#E8641B">
+<meta name="theme-color" content="#16233F">
 <link rel="icon" type="image/png" href="pbc-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --orange:#E8641B; --orange-dk:#C44F0E; --orange-lt:#FDEBDD;
-    --ink:#1B2230; --muted:#5A6475; --line:#D9E3EE;
-    --sky:#EAF4FC; --sky-2:#CFE6F7; --card:#FFFFFF; --ok:#1E7B4A;
+    --navy:#16233F; --navy-2:#223560;
+    --orange:#E8641B; --orange-dk:#B94A0C; --orange-lt:#FDEEE3;
+    --ink:#1B2230; --muted:#5B6576; --line:#E3E6EC;
+    --bg:#F7F4EF; --card:#FFFFFF; --field:#FBFAF8; --ok:#1E7B4A;
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{
-    margin:0; color:var(--ink); background:var(--sky);
+    margin:0; color:var(--ink); background:var(--bg);
     font:16px/1.55 "Nunito Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-    background-image:
-      radial-gradient(1200px 500px at 110% -10%, #fff 0, transparent 60%),
-      linear-gradient(180deg,var(--sky-2) 0,var(--sky) 340px);
     min-height:100vh;
   }
-  .wrap{max-width:640px; margin:0 auto; padding:24px 16px 48px}
-  header{text-align:center; padding:8px 0 20px}
-  .logo{width:112px; height:auto; display:block; margin:0 auto 14px; filter:drop-shadow(0 6px 14px rgba(27,34,48,.15))}
-  .month{
-    display:inline-block; font-weight:700; font-size:12.5px; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--orange-dk); background:var(--orange-lt); padding:5px 12px; border-radius:999px;
-  }
-  h1{font-family:Fraunces,Georgia,serif; font-weight:800; font-size:clamp(30px,8vw,42px); line-height:1.08; margin:14px 0 10px; letter-spacing:-.01em}
-  h1 span{color:var(--orange)}
-  .lede{color:var(--muted); font-size:17px; margin:0 auto; max-width:30em}
-  .deadline{
-    display:flex; gap:10px; align-items:center; justify-content:center; flex-wrap:wrap;
-    margin:16px auto 0; font-size:14.5px; color:var(--ink);
-  }
-  .deadline{flex-wrap:nowrap; text-align:left; width:fit-content; max-width:100%}
-  .deadline b{color:var(--orange-dk); white-space:nowrap}
-  .dot{flex:none}
-  .dot{width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(232,100,27,.18)}
+  .serif{font-family:Fraunces,Georgia,"Times New Roman",serif}
+  .yo{display:block; font-size:13.5px; line-height:1.4; font-weight:400; color:var(--muted); margin-top:2px}
 
+  /* ── Hero ───────────────────────────────── */
+  .hero{
+    color:#fff; text-align:center; padding:28px 20px 92px;
+    background:
+      radial-gradient(600px 260px at 50% -40px, rgba(232,100,27,.28), transparent 70%),
+      linear-gradient(180deg, var(--navy) 0, var(--navy-2) 100%);
+  }
+  .logo{
+    width:92px; height:auto; display:block; margin:0 auto 16px;
+    background:#fff; border-radius:50%; padding:6px;
+    box-shadow:0 0 0 4px rgba(255,255,255,.12), 0 10px 24px rgba(0,0,0,.25);
+  }
+  .eyebrow{font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:#FFC9A6}
+  h1{font-weight:700; font-size:clamp(34px,9vw,46px); line-height:1.05; margin:10px 0 12px; letter-spacing:-.01em}
+  .lede{max-width:31em; margin:0 auto; font-size:16.5px; color:rgba(255,255,255,.86)}
+  .hero .yo{color:rgba(255,255,255,.62); margin-top:6px}
+
+  .wrap{max-width:600px; margin:-68px auto 0; padding:0 16px 40px}
+
+  /* Key facts */
+  .facts{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px; overflow:hidden;
+    background:var(--line); border-radius:18px; margin-bottom:14px;
+    box-shadow:0 12px 30px -14px rgba(22,35,63,.35);
+  }
+  .fact{background:#fff; padding:12px 8px; text-align:center; font-size:12.5px; line-height:1.3; color:var(--muted)}
+  .fact svg{display:block; margin:0 auto 4px; color:var(--orange)}
+  .fact b{display:block; color:var(--ink); font-size:14px}
+  .fact .left{color:var(--orange-dk); font-weight:700}
+
+  /* ── Card ──────────────────────────────── */
   .card{
-    background:var(--card); border-radius:20px; padding:22px 18px;
-    box-shadow:0 1px 0 rgba(27,34,48,.04), 0 12px 32px -12px rgba(27,34,48,.18);
-    border:1px solid #fff;
+    background:var(--card); border-radius:22px; padding:24px 18px 22px;
+    box-shadow:0 1px 0 rgba(22,35,63,.04), 0 16px 40px -18px rgba(22,35,63,.28);
   }
-  @media (min-width:560px){ .card{padding:30px 30px} }
-  .step{display:flex; gap:10px; align-items:baseline; margin:0 0 10px}
-  .num{flex:none; width:24px; height:24px; border-radius:50%; background:var(--ink); color:#fff; font-size:13px; font-weight:700; display:grid; place-items:center; transform:translateY(-1px)}
-  label.h, .h{font-weight:700; font-size:16.5px}
-  .opt{font-weight:400; color:var(--muted); font-size:14px}
-  .block{margin-bottom:26px}
-  .block:last-of-type{margin-bottom:18px}
+  @media (min-width:560px){ .card{padding:32px 32px 28px} }
+  .block{margin-bottom:28px}
+  .step{display:flex; gap:12px; align-items:flex-start; margin:0 0 12px}
+  .num{
+    flex:none; width:28px; height:28px; border-radius:50%; margin-top:1px;
+    display:grid; place-items:center; font-size:13px; font-weight:800;
+    color:var(--orange-dk); background:var(--orange-lt);
+  }
+  .h{display:block; font-weight:800; font-size:17px; line-height:1.35}
+  .opt{font-weight:600; color:var(--muted); font-size:13.5px}
+  .opt.sub{display:block; margin-top:2px}
+  .sel{display:inline-block; margin-left:6px; font-size:12px; font-weight:800; color:#fff; background:var(--orange); border-radius:999px; padding:1px 8px; vertical-align:2px}
 
-  .chips{display:flex; flex-wrap:wrap; gap:8px; padding:0; margin:0; border:0}
+  /* Topic list */
+  .chips{display:grid; grid-template-columns:1fr; gap:8px; padding:0; margin:0; border:0}
+  @media (min-width:520px){ .chips{grid-template-columns:1fr 1fr} }
   .chips legend{position:absolute; left:-9999px}
+  .chip{position:relative; display:block}
   .chip input{position:absolute; opacity:0; pointer-events:none}
   .chip > span{
-    display:inline-block; padding:9px 13px; border-radius:12px; font-size:14.5px; line-height:1.3;
-    background:#F4F7FB; border:1.5px solid var(--line); cursor:pointer; user-select:none;
-    transition:background .15s,border-color .15s,color .15s;
+    display:flex; align-items:center; gap:12px; min-height:56px; height:100%;
+    padding:10px 12px 10px 14px; border-radius:14px; cursor:pointer; user-select:none;
+    background:var(--field); border:1.5px solid var(--line); font-size:15px; font-weight:600; line-height:1.3;
+    transition:background .15s, border-color .15s;
   }
-  .chip > span:hover{border-color:#B8C7D8}
-  .chip input:checked + span{background:var(--orange-lt); border-color:var(--orange); color:#7A2F05; font-weight:700}
-  .chip input:focus-visible + span{outline:3px solid rgba(232,100,27,.35); outline-offset:2px}
+  .chip .txt{flex:1}
+  .chip .yo{font-size:12.5px; margin-top:2px}
+  .chip .box{
+    flex:none; width:22px; height:22px; border-radius:7px; border:1.5px solid #C9CFD9; background:#fff;
+    display:grid; place-items:center; color:#fff; transition:background .15s, border-color .15s;
+  }
+  .chip .box svg{opacity:0; transition:opacity .15s}
+  .chip > span:hover{border-color:#CBD2DC}
+  .chip input:checked + span{background:var(--orange-lt); border-color:var(--orange)}
+  .chip input:checked + span .box{background:var(--orange); border-color:var(--orange)}
+  .chip input:checked + span .box svg{opacity:1}
+  .chip input:focus-visible + span{outline:3px solid rgba(232,100,27,.4); outline-offset:2px}
 
+  /* Fields */
   textarea,input[type=text]{
-    width:100%; font:inherit; color:var(--ink); background:#FBFCFE;
-    border:1.5px solid var(--line); border-radius:14px; padding:13px 14px;
-    transition:border-color .15s, box-shadow .15s;
+    width:100%; font:inherit; font-size:16px; color:var(--ink); background:var(--field);
+    border:1.5px solid var(--line); border-radius:14px; padding:14px;
+    transition:border-color .15s, box-shadow .15s, background .15s;
   }
   textarea{min-height:150px; resize:vertical}
-  textarea:focus,input[type=text]:focus{outline:none; border-color:var(--orange); box-shadow:0 0 0 4px rgba(232,100,27,.15); background:#fff}
+  textarea::placeholder,input::placeholder{color:#8A93A3}
+  textarea:focus,input[type=text]:focus{outline:none; border-color:var(--orange); box-shadow:0 0 0 4px rgba(232,100,27,.14); background:#fff}
   .hint{font-size:13.5px; color:var(--muted); margin:8px 2px 0; display:flex; justify-content:space-between; gap:12px}
-  .count.warn{color:var(--orange-dk)}
+  .count{white-space:nowrap}
+  .count.warn{color:var(--orange-dk); font-weight:700}
+  .saved{font-size:12.5px; color:var(--ok); margin:6px 2px 0; min-height:1em}
   .hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden}
 
   button{
-    width:100%; border:0; cursor:pointer; font:inherit; font-weight:700; font-size:17px;
-    color:#fff; background:var(--orange); padding:15px 18px; border-radius:14px;
-    box-shadow:0 8px 18px -8px rgba(196,79,14,.7);
+    width:100%; border:0; cursor:pointer; font:inherit; font-weight:800; font-size:17px;
+    color:#fff; background:var(--orange); padding:14px 18px; border-radius:14px;
+    box-shadow:0 10px 20px -10px rgba(185,74,12,.8);
     transition:background .15s, transform .05s;
   }
+  button .yo{color:#fff; opacity:.85; font-size:13px; font-weight:600}
   button:hover{background:var(--orange-dk)}
   button:active{transform:translateY(1px)}
-  button[disabled]{opacity:.65; cursor:progress}
-  .err{color:#B42318; font-size:14px; margin:10px 2px 0; min-height:1em}
-  .yo{display:block; font-size:13.5px; line-height:1.35; font-weight:400; color:var(--muted); margin-top:2px}
-  .chip .yo{font-size:12.5px; margin-top:1px; color:inherit; opacity:.72}
-  button .yo{color:#fff; opacity:.85; font-size:13px; font-weight:600}
-  .privacy{font-size:13.5px; color:var(--muted); text-align:center; margin:14px 0 0}
+  button[disabled]{opacity:.7; cursor:progress}
+  .err{color:#B42318; font-size:14px; margin:10px 2px 0; min-height:1em; text-align:center}
+  .trust{display:flex; gap:10px; align-items:flex-start; justify-content:center; font-size:13.5px; color:var(--muted); margin:10px 0 0; text-align:left}
+  .trust svg{flex:none; margin-top:2px; color:var(--muted)}
 
-  .done{text-align:center; padding:12px 4px}
-  .tick{width:64px;height:64px;border-radius:50%;background:#E3F4EA;color:var(--ok);display:grid;place-items:center;margin:0 auto 14px}
-  .done h2{font-family:Fraunces,Georgia,serif; font-size:26px; margin:0 0 8px}
-  .done p{color:var(--muted); margin:0 0 18px}
-  .ghost{background:transparent; color:var(--orange-dk); box-shadow:none; border:1.5px solid var(--orange); width:auto; padding:11px 20px; font-size:15px}
+  /* Result states */
+  .done{text-align:center; padding:10px 4px 4px}
+  .tick{width:68px;height:68px;border-radius:50%;background:#E4F4EA;color:var(--ok);display:grid;place-items:center;margin:0 auto 16px}
+  .done h2{font-size:26px; line-height:1.2; margin:0 0 6px}
+  .done p{color:var(--muted); margin:0 auto 18px; max-width:28em}
+  .done .yo{margin:-2px 0 14px}
+  .actions{display:grid; gap:10px}
+  .share{display:flex; align-items:center; justify-content:center; gap:10px; background:#1FA855; box-shadow:0 10px 20px -10px rgba(31,168,85,.8); text-decoration:none; color:#fff; font-weight:800; padding:14px 18px; border-radius:14px}
+  .share:hover{background:#178A45}
+  .ghost{background:transparent; color:var(--orange-dk); box-shadow:none; border:1.5px solid #F2C3A3; font-size:15.5px; padding:12px 18px}
   .ghost:hover{background:var(--orange-lt)}
 
+  /* WhatsApp note + footer */
   .wa{
-    margin-top:18px; display:flex; gap:12px; align-items:flex-start;
-    background:rgba(255,255,255,.65); border:1px dashed #B8CFE4; border-radius:16px; padding:14px 16px; font-size:14.5px;
+    margin-top:14px; display:flex; gap:12px; align-items:flex-start;
+    background:#fff; border:1px solid var(--line); border-radius:18px; padding:14px 16px; font-size:14.5px;
   }
-  .wa svg{flex:none; margin-top:2px}
-  footer{text-align:center; color:var(--muted); font-size:13px; margin-top:28px; line-height:1.6}
-  footer .verse{font-style:italic; color:var(--ink); opacity:.8}
+  .wa svg{flex:none; margin-top:1px}
+  footer{text-align:center; color:var(--muted); font-size:13px; margin-top:30px; line-height:1.6}
+  .verse{font-size:17px; line-height:1.45; color:var(--ink); max-width:24em; margin:0 auto 4px; font-style:italic}
+  .ref{font-size:12px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--orange-dk); margin-bottom:14px}
   [hidden]{display:none!important}
+  @media (prefers-reduced-motion:reduce){ *{transition:none!important; scroll-behavior:auto!important} }
 </style>
 </head>
 <body>
+<header class="hero">
+  <img class="logo" src="pbc-logo.png" alt="Powerline Baptist Church, Obawole, Iju, Lagos – Sanctuary of God's Power" width="92" height="99">
+  <div class="eyebrow">October · Capacity Building</div>
+  <h1 class="serif">Personal Finances</h1>
+  <p class="lede">Ahead of the teaching, share the questions on your heart about money, work and family. They will help shape what the speaker addresses.</p>
+  <span class="yo" lang="yo">Ẹ fi àwọn ìbéèrè yín nípa ọ̀rọ̀ owó ránṣẹ́ ṣáájú ẹ̀kọ́ náà.</span>
+</header>
+
 <div class="wrap">
-  <header>
-    <img class="logo" src="pbc-logo.png" alt="Powerline Baptist Church, Obawole, Iju, Lagos – Sanctuary of God's Power" width="112" height="121">
-    <span class="month">October · Capacity Building</span>
-    <h1>Personal <span>Finances</span></h1>
-    <p class="lede">Before the teaching, tell us what you want to learn about money. Your questions will shape what we talk about.</p>
-    <div class="deadline"><i class="dot" aria-hidden="true"></i><span>Send your question <b>on or before Sunday, 4 October</b><span class="yo" lang="yo">Ẹ fi ìbéèrè yín ránṣẹ́ kí ó tó di Ọjọ́ Àìkú, 4 Oṣù Kẹwàá</span></span></div>
-  </header>
+  <div class="facts" role="list">
+    <div class="fact" role="listitem">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+      <b>Sun, 4 Oct</b><span id="left" class="left">Last day</span>
+    </div>
+    <div class="fact" role="listitem">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21a8 8 0 00-16 0"/><circle cx="12" cy="8" r="4"/></svg>
+      <b>Anonymous</b>Name optional
+    </div>
+    <div class="fact" role="listitem">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <b>2 minutes</b>Any language
+    </div>
+  </div>
 
   <main class="card">
     <form id="qform" novalidate>
       <div class="block">
-        <div class="step"><span class="num">1</span><span class="h">What is your question about? <span class="opt">(optional, pick any)</span><span class="yo" lang="yo">Kí ni ìbéèrè yín dá lé lórí? Ẹ lè yan ju ẹyọ kan lọ (kò pọndandan)</span></span></div>
+        <div class="step"><span class="num">1</span>
+          <span class="h">What is your question about? <span class="sel" id="sel" hidden></span>
+            <span class="opt sub">Optional · choose any that apply</span>
+            <span class="yo" lang="yo">Kí ni ìbéèrè yín dá lé lórí? Ẹ lè yan ju ẹyọ kan lọ</span></span>
+        </div>
         <fieldset class="chips" id="topics">
-          <legend>Topic</legend>
+          <legend>Topics</legend>
         </fieldset>
       </div>
 
       <div class="block">
-        <div class="step"><span class="num">2</span><label class="h" for="question">Type your question<span class="yo" lang="yo">Ẹ kọ ìbéèrè yín síbí</span></label></div>
+        <div class="step"><span class="num">2</span>
+          <label class="h" for="question">Your question
+            <span class="yo" lang="yo">Ẹ kọ ìbéèrè yín síbí</span></label>
+        </div>
         <textarea id="question" name="question" maxlength="1500" placeholder="E.g. How do I plan for yearly rent and school fees when my salary is monthly?" required></textarea>
-        <div class="hint"><span>English, Pidgin or Yoruba are all fine.</span><span class="count" id="count">0 / 1500</span></div>
+        <div class="hint"><span>English, Pidgin or Yoruba are all welcome.</span><span class="count" id="count"></span></div>
+        <p class="saved" id="saved" aria-live="polite"></p>
       </div>
 
       <div class="block">
-        <div class="step"><span class="num">3</span><label class="h" for="name">Your name <span class="opt">(optional)</span><span class="yo" lang="yo">Orúkọ yín (kò pọndandan)</span></label></div>
-        <input type="text" id="name" name="name" maxlength="80" autocomplete="name" placeholder="Leave empty to ask anonymously">
+        <div class="step"><span class="num">3</span>
+          <label class="h" for="name">Your name <span class="opt">(optional)</span>
+            <span class="yo" lang="yo">Orúkọ yín (kò pọndandan)</span></label>
+        </div>
+        <input type="text" id="name" name="name" maxlength="80" autocomplete="name" placeholder="Leave blank to remain anonymous">
       </div>
 
       <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"></label></div>
 
-      <button type="submit" id="submit">Send my question<span class="yo" lang="yo">Fi ìbéèrè mi ránṣẹ́</span></button>
+      <button type="submit" id="submit">Submit my question<span class="yo" lang="yo">Fi ìbéèrè mi ránṣẹ́</span></button>
       <p class="err" id="err" role="alert"></p>
-      <p class="privacy">No question is too small. Your name is optional. Ask freely.<span class="yo" lang="yo">Kò sí ìbéèrè tó kéré jù. Ẹ béèrè láìbẹ̀rù.</span></p>
+      <p class="trust">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+        <span>Every question is welcome. Questions are read only by the Pastor and the teaching team.<span class="yo" lang="yo">Gbogbo ìbéèrè ló ṣe pàtàkì. Ẹ béèrè láìbẹ̀rù.</span></span>
+      </p>
     </form>
 
-    <div class="done" id="done" hidden>
-      <div class="tick"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
-      <h2>Thank you. God bless you!</h2>
+    <div class="done" id="done" hidden tabindex="-1">
+      <div class="tick"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <h2 class="serif">Thank you. God bless you!</h2>
       <p class="yo" lang="yo">Ẹ ṣé o. Ọlọ́run á bùkún yín!</p>
-      <p>We've received your question. Look out for it during the Personal Finances session.</p>
-      <button type="button" class="ghost" id="again">Ask another question</button>
+      <p>Your question has been received. Look out for it during the Personal Finances session.</p>
+      <div class="actions">
+        <a class="share" id="share" href="#" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2z"/><path fill="#1FA855" d="M9.1 7.3c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.9 4.5 4 2.2.9 2.7.7 3.2.6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3l-1.7-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.3-.8-.7-1.3-1.5-1.4-1.8-.2-.3 0-.4.1-.5l.4-.4.3-.4c.1-.2 0-.4 0-.5l-.9-2.1z"/></svg>
+          Invite others on WhatsApp</a>
+        <button type="button" class="ghost" id="again">Submit another question</button>
+      </div>
     </div>
 
     <div class="done" id="closed" hidden>
-      <h2>Questions are now closed</h2>
+      <h2 class="serif">Questions are now closed</h2>
       <p>Thank you for your interest. Please join us for the Personal Finances session in church.</p>
     </div>
   </main>
@@ -182,16 +257,18 @@
   </div>
 
   <footer>
-    <div class="verse">"The plans of the diligent lead surely to abundance." Proverbs 21:5</div>
+    <div class="verse serif">“The plans of the diligent lead surely to abundance.”</div>
+    <div class="ref">Proverbs 21:5</div>
     <div>Powerline Baptist Church · Obawole, Iju, Lagos</div>
   </footer>
 </div>
 
 <script>
-  // ▼ Paste your Google Apps Script Web App URL here (see SETUP.md)
+  // Google Apps Script Web App URL (see CLAUDE.md)
   const SHEET_URL = "https://script.google.com/macros/s/AKfycbz4E38pSPOxPQe12g_ZYon4Ntv9OP8j4QEcZRL6AbXKNf9cbyvkrhLWKAEM6aMGNdBe/exec";
   // Form closes after this moment (Lagos time, WAT = UTC+1)
   const CLOSES_AT = new Date("2026-10-04T23:59:59+01:00");
+  const SITE_URL = "https://pbc-questions.vercel.app/";
 
   // [English (saved to the Sheet), Yoruba subtext]
   const TOPICS = [
@@ -211,29 +288,56 @@
 
   const $ = id => document.getElementById(id);
   const form = $("qform"), q = $("question"), err = $("err"), btn = $("submit"), btnHTML = btn.innerHTML;
+  const MAX = 1500, DRAFT_KEY = "pbc-finance-draft";
+  const tick = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
 
   $("topics").insertAdjacentHTML("beforeend", TOPICS.map(([t,yo],i) =>
-    `<label class="chip"><input type="checkbox" name="topic" value="${t.replace(/"/g,"&quot;")}" id="t${i}"><span>${t}<span class="yo" lang="yo">${yo}</span></span></label>`
+    `<label class="chip"><input type="checkbox" name="topic" value="${t.replace(/"/g,"&quot;")}" id="t${i}"><span><span class="txt">${t}<span class="yo" lang="yo">${yo}</span></span><i class="box" aria-hidden="true">${tick}</i></span></label>`
   ).join(""));
+  const checked = () => [...form.querySelectorAll("input[name=topic]:checked")];
+  const updateSel = () => { const n = checked().length, s = $("sel"); s.hidden = !n; s.textContent = `${n} selected`; };
+  $("topics").addEventListener("change", updateSel);
 
-  q.addEventListener("input", () => {
+  // Days left (counted in Lagos time)
+  const lagosDay = d => Math.floor((d.getTime() + 3600e3) / 864e5);
+  const daysLeft = lagosDay(CLOSES_AT) - lagosDay(new Date());
+  $("left").textContent = daysLeft > 1 ? `${daysLeft} days left` : daysLeft === 1 ? "Closes tomorrow" : "Closes today";
+
+  // Draft is kept on this phone so a dropped connection doesn't lose the question
+  const store = {
+    get(){ try { return localStorage.getItem(DRAFT_KEY) || ""; } catch { return ""; } },
+    set(v){ try { v ? localStorage.setItem(DRAFT_KEY, v) : localStorage.removeItem(DRAFT_KEY); } catch {} }
+  };
+  let saveTimer;
+  const updateCount = () => {
     const n = q.value.length, c = $("count");
-    c.textContent = `${n} / 1500`; c.classList.toggle("warn", n > 1350);
+    c.textContent = n > MAX * .8 ? `${MAX - n} characters left` : "";
+    c.classList.toggle("warn", n > MAX * .9);
+  };
+  q.value = store.get(); updateCount();
+  q.addEventListener("input", () => {
+    updateCount();
     if (err.textContent) err.textContent = "";
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => { store.set(q.value); $("saved").textContent = q.value ? "Draft saved on this phone" : ""; }, 700);
   });
 
   if (Date.now() > CLOSES_AT.getTime()) { form.hidden = true; $("closed").hidden = false; }
 
+  $("share").href = "https://wa.me/?text=" + encodeURIComponent(
+    "Powerline Baptist Church – Personal Finances (October · Capacity Building).\n" +
+    "Share your questions ahead of the teaching, on or before Sunday, 4 October. Your name is optional.\n" + SITE_URL);
+
   form.addEventListener("submit", async e => {
     e.preventDefault();
     const text = q.value.trim();
-    if (text.length < 5) { err.textContent = "Please type your question before sending."; q.focus(); return; }
+    if (text.length < 5) { err.textContent = "Please type your question before submitting."; q.focus(); return; }
     if ($("website").value) return; // spam bot
 
-    const topic = [...form.querySelectorAll('input[name=topic]:checked')].map(o => o.value).join("; ");
+    const topic = checked().map(o => o.value).join("; ");
     const body = new URLSearchParams({ topic, question: text, name: $("name").value.trim() });
 
-    btn.disabled = true; btn.textContent = "Sending…"; err.textContent = "";
+    btn.disabled = true; btn.textContent = "Submitting…"; err.textContent = "";
     try {
       if (SHEET_URL.startsWith("http")) {
         await fetch(SHEET_URL, { method: "POST", mode: "no-cors", body });
@@ -241,17 +345,19 @@
         console.warn("SHEET_URL not set – demo mode, nothing saved.", Object.fromEntries(body));
         await new Promise(r => setTimeout(r, 600));
       }
+      store.set(""); $("saved").textContent = "";
       form.hidden = true; $("done").hidden = false;
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      document.querySelector(".wrap").scrollIntoView({ behavior: "smooth" });
+      $("done").focus({ preventScroll: true });
     } catch (x) {
-      err.textContent = "Network problem. Please check your data connection and try again.";
+      err.textContent = "Network problem. Your question is saved on this phone. Please check your data and try again.";
     } finally {
       btn.disabled = false; btn.innerHTML = btnHTML;
     }
   });
 
   $("again").addEventListener("click", () => {
-    form.reset(); $("count").textContent = "0 / 1500";
+    form.reset(); updateCount(); updateSel();
     $("done").hidden = true; form.hidden = false; q.focus();
   });
 </script>
