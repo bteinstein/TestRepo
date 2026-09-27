@@ -63,12 +63,12 @@
   .chips{display:flex; flex-wrap:wrap; gap:8px; padding:0; margin:0; border:0}
   .chips legend{position:absolute; left:-9999px}
   .chip input{position:absolute; opacity:0; pointer-events:none}
-  .chip span{
+  .chip > span{
     display:inline-block; padding:9px 13px; border-radius:12px; font-size:14.5px; line-height:1.3;
     background:#F4F7FB; border:1.5px solid var(--line); cursor:pointer; user-select:none;
     transition:background .15s,border-color .15s,color .15s;
   }
-  .chip span:hover{border-color:#B8C7D8}
+  .chip > span:hover{border-color:#B8C7D8}
   .chip input:checked + span{background:var(--orange-lt); border-color:var(--orange); color:#7A2F05; font-weight:700}
   .chip input:focus-visible + span{outline:3px solid rgba(232,100,27,.35); outline-offset:2px}
 
@@ -93,6 +93,9 @@
   button:active{transform:translateY(1px)}
   button[disabled]{opacity:.65; cursor:progress}
   .err{color:#B42318; font-size:14px; margin:10px 2px 0; min-height:1em}
+  .yo{display:block; font-size:13.5px; line-height:1.35; font-weight:400; color:var(--muted); margin-top:2px}
+  .chip .yo{font-size:12.5px; margin-top:1px; color:inherit; opacity:.72}
+  button .yo{color:#fff; opacity:.85; font-size:13px; font-weight:600}
   .privacy{font-size:13.5px; color:var(--muted); text-align:center; margin:14px 0 0}
 
   .done{text-align:center; padding:12px 4px}
@@ -119,39 +122,40 @@
     <span class="month">October · Capacity Building</span>
     <h1>Personal <span>Finances</span></h1>
     <p class="lede">Before the teaching, tell us what you want to learn about money. Your questions will shape what we talk about.</p>
-    <div class="deadline"><i class="dot" aria-hidden="true"></i><span>Send your question <b>on or before Sunday, 4 October</b></span></div>
+    <div class="deadline"><i class="dot" aria-hidden="true"></i><span>Send your question <b>on or before Sunday, 4 October</b><span class="yo" lang="yo">Ẹ fi ìbéèrè yín ránṣẹ́ kí ó tó di Ọjọ́ Àìkú, 4 Oṣù Kẹwàá</span></span></div>
   </header>
 
   <main class="card">
     <form id="qform" novalidate>
       <div class="block">
-        <div class="step"><span class="num">1</span><span class="h">What is your question about? <span class="opt">(optional)</span></span></div>
+        <div class="step"><span class="num">1</span><span class="h">What is your question about? <span class="opt">(optional)</span><span class="yo" lang="yo">Kí ni ìbéèrè yín dá lé lórí? (kò pọndandan)</span></span></div>
         <fieldset class="chips" id="topics">
           <legend>Topic</legend>
         </fieldset>
       </div>
 
       <div class="block">
-        <div class="step"><span class="num">2</span><label class="h" for="question">Type your question</label></div>
+        <div class="step"><span class="num">2</span><label class="h" for="question">Type your question<span class="yo" lang="yo">Ẹ kọ ìbéèrè yín síbí</span></label></div>
         <textarea id="question" name="question" maxlength="1500" placeholder="E.g. How do I plan for yearly rent and school fees when my salary is monthly?" required></textarea>
         <div class="hint"><span>English, Pidgin or Yoruba are all fine.</span><span class="count" id="count">0 / 1500</span></div>
       </div>
 
       <div class="block">
-        <div class="step"><span class="num">3</span><label class="h" for="name">Your name <span class="opt">(optional)</span></label></div>
+        <div class="step"><span class="num">3</span><label class="h" for="name">Your name <span class="opt">(optional)</span><span class="yo" lang="yo">Orúkọ yín (kò pọndandan)</span></label></div>
         <input type="text" id="name" name="name" maxlength="80" autocomplete="name" placeholder="Leave empty to ask anonymously">
       </div>
 
       <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"></label></div>
 
-      <button type="submit" id="submit">Send my question</button>
+      <button type="submit" id="submit">Send my question<span class="yo" lang="yo">Fi ìbéèrè mi ránṣẹ́</span></button>
       <p class="err" id="err" role="alert"></p>
-      <p class="privacy">No question is too small. Your name is optional. Ask freely.</p>
+      <p class="privacy">No question is too small. Your name is optional. Ask freely.<span class="yo" lang="yo">Kò sí ìbéèrè tó kéré jù. Ẹ béèrè láìbẹ̀rù.</span></p>
     </form>
 
     <div class="done" id="done" hidden>
       <div class="tick"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
       <h2>Thank you. God bless you!</h2>
+      <p class="yo" lang="yo">Ẹ ṣé o. Ọlọ́run á bùkún yín!</p>
       <p>We've received your question. Look out for it during the Personal Finances session.</p>
       <button type="button" class="ghost" id="again">Ask another question</button>
     </div>
@@ -164,7 +168,7 @@
 
   <div class="wa">
     <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#25D366" d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2z"/><path fill="#fff" d="M9.1 7.3c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.9 4.5 4 2.2.9 2.7.7 3.2.6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3l-1.7-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.3-.8-.7-1.3-1.5-1.4-1.8-.2-.3 0-.4.1-.5l.4-.4.3-.4c.1-.2 0-.4 0-.5l-.9-2.1z"/></svg>
-    <div>Prefer WhatsApp? You can still send your question to the <b>church WhatsApp group</b>.</div>
+    <div>Prefer WhatsApp? You can still send your question to the <b>church WhatsApp group</b>.<span class="yo" lang="yo">Ẹ tún lè fi ìbéèrè yín ránṣẹ́ sí WhatsApp group ìjọ.</span></div>
   </div>
 
   <footer>
@@ -179,26 +183,27 @@
   // Form closes after this moment (Lagos time, WAT = UTC+1)
   const CLOSES_AT = new Date("2026-10-04T23:59:59+01:00");
 
+  // [English (saved to the Sheet), Yoruba subtext]
   const TOPICS = [
-    "Budgeting with rising prices",
-    "Tithes, offerings & family needs",
-    "Family pressure (\"black tax\")",
-    "Ajo, esusu & cooperatives",
-    "Saving: naira vs dollars",
-    "Loan apps & debt",
-    "Ponzi & \"double your money\" traps",
-    "Rent & school fees planning",
-    "Side hustle & small business",
-    "Pension, T-bills & investing",
-    "Owambe & event spending",
-    "Something else"
+    ["Budgeting with rising prices", "Ìṣètò owó nígbà tí ọjà ń wọ́n"],
+    ["Tithes, offerings & family needs", "Ìdámẹ́wàá, ọrẹ àti àìní ẹbí"],
+    ["Family pressure (\"black tax\")", "Ẹrù ẹbí"],
+    ["Ajo, esusu & cooperatives", "Àjọ, èsúsú àti ẹgbẹ́ àjùmọ̀ṣe"],
+    ["Saving: naira vs dollars", "Ìfowópamọ́: náírà tàbí dọ́là"],
+    ["Loan apps & debt", "Àwọn app awínwó àti gbèsè"],
+    ["Ponzi & \"double your money\" traps", "Ìdẹkùn \"sọ owó di méjì\""],
+    ["Rent & school fees planning", "Ìṣètò owó ilé àti owó ilé-ìwé"],
+    ["Side hustle & small business", "Iṣẹ́ àfikún àti òwò kékeré"],
+    ["Pension, T-bills & investing", "Owó ìfẹ̀yìntì, T-bills àti ìdókòwò"],
+    ["Owambe & event spending", "Ìnáwó àríyá (owambe)"],
+    ["Something else", "Nǹkan mìíràn"]
   ];
 
   const $ = id => document.getElementById(id);
-  const form = $("qform"), q = $("question"), err = $("err"), btn = $("submit");
+  const form = $("qform"), q = $("question"), err = $("err"), btn = $("submit"), btnHTML = btn.innerHTML;
 
-  $("topics").insertAdjacentHTML("beforeend", TOPICS.map((t,i) =>
-    `<label class="chip"><input type="radio" name="topic" value="${t.replace(/"/g,"&quot;")}" id="t${i}"><span>${t}</span></label>`
+  $("topics").insertAdjacentHTML("beforeend", TOPICS.map(([t,yo],i) =>
+    `<label class="chip"><input type="radio" name="topic" value="${t.replace(/"/g,"&quot;")}" id="t${i}"><span>${t}<span class="yo" lang="yo">${yo}</span></span></label>`
   ).join(""));
   // allow un-selecting a chip by tapping it again
   document.querySelectorAll('#topics input').forEach(r => {
@@ -238,7 +243,7 @@
     } catch (x) {
       err.textContent = "Network problem. Please check your data connection and try again.";
     } finally {
-      btn.disabled = false; btn.textContent = "Send my question";
+      btn.disabled = false; btn.innerHTML = btnHTML;
     }
   });
 
