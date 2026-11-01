@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Forge Conversation Themes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: projector-first two-column board (barriers | enablers), then a bridge list and room questions. Stacks on phones. */
+:root {
+  --bg: #f3f5f7;
+  --surface: #ffffff;
+  --ink: #16202a;
+  --muted: #5a6876;
+  --line: #d9dfe5;
+  --barrier: #b1601f;
+  --barrier-soft: #f4e3d4;
+  --enabler: #11746f;
+  --enabler-soft: #d5ece9;
+  --focus: #2f5fd0;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11171d; --surface: #19222b; --ink: #e8edf2; --muted: #9aa8b5; --line: #2c3946;
+    --barrier: #e3955a; --barrier-soft: #3a2a1d; --enabler: #4fc2b9; --enabler-soft: #173532; --focus: #8aa8f0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11171d; --surface: #19222b; --ink: #e8edf2; --muted: #9aa8b5; --line: #2c3946;
+  --barrier: #e3955a; --barrier-soft: #3a2a1d; --enabler: #4fc2b9; --enabler-soft: #173532; --focus: #8aa8f0;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.5;
+  padding-block: 28px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1240px; margin: 0 auto; display: grid; gap: 28px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(1.8rem, 3.6vw, 2.8rem); font-weight: 700; letter-spacing: -0.01em; line-height: 1.1; }
+h2 { font-size: 1.35rem; font-weight: 700; }
+h3 { font-size: 1.05rem; font-weight: 500; }
+.eyebrow { font-size: .78rem; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
+button, textarea { font: inherit; color: inherit; }
+button {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 7px 14px; cursor: pointer;
+}
+button:hover { border-color: var(--muted); }
+button.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+header { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: end; justify-content: space-between; }
+.title { display: grid; gap: 6px; min-width: 0; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 20px; color: var(--muted); font-size: .95rem; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; font-size: .85rem; border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; color: var(--muted); }
+.chip.sample { border-color: var(--barrier); color: var(--barrier); }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; display: grid; gap: 14px; }
+.panel textarea { width: 100%; min-height: 220px; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 12px; font-family: var(--font-data); font-size: .85rem; }
+.panel .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.panel p { margin: 0; color: var(--muted); max-width: 70ch; }
+.status { font-size: .9rem; color: var(--muted); }
+.status.error { color: var(--barrier); }
+
+.board { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.poll { display: grid; gap: 16px; align-content: start; min-width: 0; }
+.poll-head { display: grid; gap: 4px; border-top: 4px solid var(--tone); padding-top: 12px; }
+.poll-head .q { color: var(--muted); font-style: italic; }
+.poll[data-tone="barrier"] { --tone: var(--barrier); --tone-soft: var(--barrier-soft); }
+.poll[data-tone="enabler"] { --tone: var(--enabler); --tone-soft: var(--enabler-soft); }
+.themes { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.theme { display: grid; gap: 4px; }
+.theme-top { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.theme-top h3 { min-width: 0; }
+.bar { height: 10px; background: var(--tone-soft); border-radius: 3px; overflow: hidden; }
+.bar span { display: block; height: 100%; background: var(--tone); border-radius: 3px; }
+.theme p { margin: 0; color: var(--muted); font-size: .95rem; }
+.theme.other h3 { color: var(--muted); }
+.empty { color: var(--muted); font-style: italic; }
+
+.bridge { display: grid; gap: 12px; }
+.bridge ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.bridge li { display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; }
+.bridge .from { color: var(--barrier); font-weight: 600; }
+.bridge .to { color: var(--enabler); font-weight: 600; }
+.bridge .arrow { color: var(--muted); font-family: var(--font-data); }
+
+.prompts { display: grid; gap: 12px; }
+.prompts ol { margin: 0; padding-left: 1.4em; display: grid; gap: 8px; font-size: 1.1rem; }
+
+footer { color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); padding-top: 14px; }
+
+body.presenting .controls, body.presenting #loader { display: none; }
+body.presenting { font-size: 20px; }
+
+@media (max-width: 760px) {
+  .board { grid-template-columns: 1fr; }
+  .bridge li { grid-template-columns: 1fr; gap: 4px; }
+  .bridge .arrow { transform: rotate(90deg); justify-self: start; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .bar span { transition: width .6s ease-out; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="title">
+      <span class="eyebrow" id="ev-team">Omni Forge Team Retreat</span>
+      <h1 id="ev-title">Difficult Conversations</h1>
+      <div class="meta">
+        <span id="ev-date">Sun 1 Nov 2026 · 21:00 Lagos</span>
+        <span><span class="num" id="ev-total">0</span> anonymous responses</span>
+        <span class="chip" id="privacy-chip">Themes under 3 responses are merged</span>
+        <span class="chip sample" id="sample-chip">Example data</span>
+      </div>
+    </div>
+    <div class="controls">
+      <button type="button" id="btn-load">Load results</button>
+      <button type="button" id="btn-present" class="primary">Present</button>
+    </div>
+  </header>
+
+  <section class="panel" id="loader" hidden>
+    <h2>Load results</h2>
+    <p>1. Copy the analysis prompt and paste it into Claude with the raw answers from both Slido polls.<br>
+       2. Paste the JSON Claude returns below and press Show. Raw answers never go into this page.</p>
+    <div class="row">
+      <button type="button" id="btn-copy-prompt">Copy analysis prompt</button>
+      <span class="status" id="copy-status"></span>
+    </div>
+    <label class="eyebrow" for="json-input">Results JSON</label>
+    <textarea id="json-input" spellcheck="false" placeholder='{"polls":[ ... ]}'></textarea>
+    <div class="row">
+      <button type="button" class="primary" id="btn-apply">Show</button>
+      <button type="button" id="btn-sample">Back to example data</button>
+      <span class="status" id="apply-status"></span>
+    </div>
+  </section>
+
+  <main class="board" id="board"></main>
+
+  <section class="bridge" id="bridge-sec">
+    <div>
+      <span class="eyebrow">Barrier to enabler</span>
+      <h2>What we said would make it easier</h2>
+    </div>
+    <ol id="bridge"></ol>
+  </section>
+
+  <section class="prompts" id="prompts-sec">
+    <div>
+      <span class="eyebrow">For the room</span>
+      <h2>Questions to discuss</h2>
+    </div>
+    <ol id="prompts"></ol>
+  </section>
+
+  <footer id="foot">Answers were collected anonymously in Slido and summarised into themes. No individual answer is shown.</footer>
+</div>
+
+<script>
+const ANALYSIS_PROMPT = `You are helping a facilitator at a team retreat session on difficult conversations.
+Below are anonymous answers to two Slido polls:
+Poll 1: "I sometimes avoid an honest conversation because…"
+Poll 2: "It would be easier for me to speak honestly if…"
+
+Group each poll's answers into 3–6 themes. Rules:
+- Paraphrase only. Never quote an answer verbatim.
+- Leave out anything that names a person or describes a specific incident.
+- Counts must add up to the number of answers you used for that poll.
+- Link poll 1 themes to poll 2 themes where an enabler answers a barrier.
+- Suggest 2–3 discussion questions tied to the objective: helping the team have difficult conversations more openly.
+
+Reply with JSON only, in exactly this shape:
+{
+  "polls": [
+    { "id": "barriers", "question": "I sometimes avoid an honest conversation because…", "responses": 0,
+      "themes": [ { "label": "Short theme name", "count": 0, "summary": "One-line paraphrase" } ] },
+    { "id": "enablers", "question": "It would be easier for me to speak honestly if…", "responses": 0,
+      "themes": [ { "label": "Short theme name", "count": 0, "summary": "One-line paraphrase" } ] }
+  ],
+  "links": [ { "barrier": "Poll 1 theme label", "enabler": "Poll 2 theme label" } ],
+  "prompts": [ "Discussion question" ]
+}
+
+Poll 1 answers:
+[paste here]
+
+Poll 2 answers:
+[paste here]`;
+
+const SAMPLE = {
+  sample: true,
+  minThemeSize: 3,
+  polls: [
+    { id: "barriers", question: "I sometimes avoid an honest conversation because…", responses: 18, themes: [
+      { label: "Fear of damaging the relationship", count: 6, summary: "Worry that honesty will make things awkward or end a good working relationship." },
+      { label: "Not sure how to say it", count: 5, summary: "Lacking the words or a safe way to start the conversation." },
+      { label: "It won't change anything", count: 4, summary: "Past experience that raising issues leads nowhere." },
+      { label: "Seniority and hierarchy", count: 2, summary: "Hesitation to challenge someone more senior." },
+      { label: "Timing", count: 1, summary: "Never feels like the right moment." }
+    ]},
+    { id: "enablers", question: "It would be easier for me to speak honestly if…", responses: 17, themes: [
+      { label: "Feedback is invited first", count: 6, summary: "Leaders and peers explicitly ask for honest input." },
+      { label: "A shared way to raise things", count: 5, summary: "Simple agreed phrases or a routine slot for hard topics." },
+      { label: "Follow-through is visible", count: 4, summary: "Seeing that concerns raised before were acted on." },
+      { label: "One-to-one setting", count: 2, summary: "Private conversations instead of group settings." }
+    ]}
+  ],
+  links: [
+    { barrier: "Fear of damaging the relationship", enabler: "Feedback is invited first" },
+    { barrier: "Not sure how to say it", enabler: "A shared way to raise things" },
+    { barrier: "It won't change anything", enabler: "Follow-through is visible" }
+  ],
+  prompts: [
+    "What is one phrase we could all agree to use when we need to raise something hard?",
+    "How would we show each other that a concern was heard and acted on?",
+    "What does inviting honest feedback look like in our weekly routine?"
+  ]
+};
+
+const STORE_KEY = "forge-dashboard-results";
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+/* Privacy: themes below minThemeSize are folded into one "Other" line with no summary. */
+function protect(themes, min) {
+  const keep = [], small = [];
+  for (const t of themes || []) (Number(t.count) >= min ? keep : small).push(t);
+  keep.sort((a, b) => b.count - a.count);
+  const otherCount = small.reduce((n, t) => n + Number(t.count || 0), 0);
+  if (otherCount > 0) keep.push({ label: "Other smaller themes", count: otherCount, summary: "", other: true });
+  return { themes: keep, hidden: new Set(small.map((t) => t.label)) };
+}
+
+function renderPoll(poll, tone, min) {
+  const { themes, hidden } = protect(poll.themes, min);
+  const max = Math.max(1, ...themes.map((t) => Number(t.count) || 0));
+  const total = poll.responses ?? themes.reduce((n, t) => n + Number(t.count || 0), 0);
+  const items = themes.length ? themes.map((t) => `
+    <li class="theme${t.other ? " other" : ""}">
+      <div class="theme-top"><h3>${esc(t.label)}</h3><span class="num">${Number(t.count) || 0}</span></div>
+      <div class="bar" aria-hidden="true"><span style="width:${((Number(t.count) || 0) / max) * 100}%"></span></div>
+      ${t.summary ? `<p>${esc(t.summary)}</p>` : ""}
+    </li>`).join("") : `<li class="empty">No themes yet.</li>`;
+  return {
+    hidden,
+    total: Number(total) || 0,
+    html: `<section class="poll" data-tone="${tone}">
+      <div class="poll-head">
+        <span class="eyebrow">${tone === "barrier" ? "What holds us back" : "What would help"} · <span class="num">${Number(total) || 0}</span> responses</span>
+        <h2 class="q">${esc(poll.question)}</h2>
+      </div>
+      <ul class="themes">${items}</ul>
+    </section>`
+  };
+}
+
+function render(data) {
+  const min = Number(data.minThemeSize ?? 3);
+  const polls = data.polls || [];
+  const p1 = renderPoll(polls[0] || { question: "", themes: [] }, "barrier", min);
+  const p2 = renderPoll(polls[1] || { question: "", themes: [] }, "enabler", min);
+  $("board").innerHTML = p1.html + p2.html;
+  $("ev-total").textContent = p1.total + p2.total;
+  $("privacy-chip").textContent = `Themes under ${min} responses are merged`;
+  $("sample-chip").hidden = !data.sample;
+
+  const links = (data.links || []).filter((l) => !p1.hidden.has(l.barrier) && !p2.hidden.has(l.enabler));
+  $("bridge").innerHTML = links.map((l) => `<li><span class="from">${esc(l.barrier)}</span><span class="arrow">→</span><span class="to">${esc(l.enabler)}</span></li>`).join("");
+  $("bridge-sec").hidden = links.length === 0;
+
+  const prompts = data.prompts || [];
+  $("prompts").innerHTML = prompts.map((p) => `<li>${esc(p)}</li>`).join("");
+  $("prompts-sec").hidden = prompts.length === 0;
+}
+
+function validate(d) {
+  if (!d || !Array.isArray(d.polls) || d.polls.length < 2) throw new Error("The JSON needs a \"polls\" list with both polls.");
+  for (const p of d.polls) if (!Array.isArray(p.themes)) throw new Error(`Poll "${p.question || p.id}" has no "themes" list.`);
+  return d;
+}
+
+function save(d) { try { localStorage.setItem(STORE_KEY, JSON.stringify(d)); } catch (e) {} }
+function loadSaved() { try { const s = localStorage.getItem(STORE_KEY); return s ? validate(JSON.parse(s)) : null; } catch (e) { return null; } }
+function clearSaved() { try { localStorage.removeItem(STORE_KEY); } catch (e) {} }
+
+$("btn-load").addEventListener("click", () => { $("loader").hidden = !$("loader").hidden; });
+
+$("btn-copy-prompt").addEventListener("click", () => {
+  const done = (msg) => { $("copy-status").textContent = msg; };
+  try {
+    navigator.clipboard.writeText(ANALYSIS_PROMPT).then(() => done("Prompt copied."), () => {
+      $("json-input").value = ANALYSIS_PROMPT; $("json-input").select(); done("Copy was blocked. The prompt is in the box, selected for you.");
+    });
+  } catch (e) { $("json-input").value = ANALYSIS_PROMPT; $("json-input").select(); done("Copy was blocked. The prompt is in the box, selected for you."); }
+});
+
+$("btn-apply").addEventListener("click", () => {
+  const st = $("apply-status");
+  try {
+    let raw = $("json-input").value.trim().replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/, "");
+    const d = validate(JSON.parse(raw));
+    d.sample = false;
+    render(d); save(d);
+    st.className = "status"; st.textContent = "Showing your results.";
+  } catch (e) {
+    st.className = "status error";
+    st.textContent = e instanceof SyntaxError ? "That isn't valid JSON. Paste only the JSON block Claude returned." : e.message;
+  }
+});
+
+$("btn-sample").addEventListener("click", () => { clearSaved(); render(SAMPLE); $("apply-status").textContent = "Showing example data."; });
+
+function setPresenting(on) {
+  document.body.classList.toggle("presenting", on);
+  if (on) { $("loader").hidden = true; document.documentElement.requestFullscreen?.().catch(() => {}); }
+}
+$("btn-present").addEventListener("click", () => setPresenting(true));
+document.addEventListener("keydown", (e) => {
+  if (e.target.tagName === "TEXTAREA") return;
+  if (e.key === "Escape") setPresenting(false);
+  if (e.key.toLowerCase() === "p") setPresenting(!document.body.classList.contains("presenting"));
+});
+document.addEventListener("fullscreenchange", () => { if (!document.fullscreenElement) setPresenting(false); });
+
+/* Start: saved results in this browser → data.json next to the page (Vercel) → example data. */
+(async function start() {
+  const saved = loadSaved();
+  if (saved) return render(saved);
+  render(SAMPLE);
+  try {
+    const r = await fetch("data.json", { cache: "no-store" });
+    if (r.ok) { const d = validate(await r.json()); if (!d.sample) render(d); }
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>
